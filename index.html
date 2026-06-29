@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Auth App</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- AUTH PAGES -->
+  <div id="auth-page" class="page">
+    <div class="card">
+      <div class="tabs">
+        <button class="tab active" onclick="showTab('login')">Login</button>
+        <button class="tab" onclick="showTab('signup')">Sign Up</button>
+      </div>
+
+      <!-- Login -->
+      <form id="login-form" onsubmit="handleLogin(event)">
+        <h2>Welcome back</h2>
+        <div class="field">
+          <label>Email</label>
+          <input type="email" id="login-email" required placeholder="you@example.com"/>
+        </div>
+        <div class="field">
+          <label>Password</label>
+          <input type="password" id="login-password" required placeholder="••••••••"/>
+        </div>
+        <div id="login-error" class="error hidden"></div>
+        <button type="submit" class="btn-primary" id="login-btn">Login</button>
+        <p class="switch-link">No account? <a href="#" onclick="showTab('signup')">Sign up</a></p>
+      </form>
+
+      <!-- Signup -->
+      <form id="signup-form" class="hidden" onsubmit="handleSignup(event)">
+        <h2>Create account</h2>
+        <div class="field">
+          <label>Email</label>
+          <input type="email" id="signup-email" required placeholder="you@example.com"/>
+        </div>
+        <div class="field">
+          <label>Password <span class="hint">(min 8 characters)</span></label>
+          <input type="password" id="signup-password" required placeholder="••••••••" minlength="8"/>
+        </div>
+        <div class="field">
+          <label>Confirm Password</label>
+          <input type="password" id="signup-confirm" required placeholder="••••••••"/>
+        </div>
+        <div id="signup-error" class="error hidden"></div>
+        <button type="submit" class="btn-primary" id="signup-btn">Create Account</button>
+        <p class="switch-link">Already have an account? <a href="#" onclick="showTab('login')">Login</a></p>
+      </form>
+    </div>
+  </div>
+
+  <!-- DASHBOARD -->
+  <div id="dashboard-page" class="page hidden">
+    <nav>
+      <span class="logo">MyApp</span>
+      <div>
+        <span id="nav-email" class="nav-email"></span>
+        <button class="btn-outline" onclick="logout()">Logout</button>
+      </div>
+    </nav>
+    <div class="dashboard-content">
+      <div class="welcome-card">
+        <h1 id="welcome-msg">Welcome!</h1>
+        <p>You are successfully logged in.</p>
+        <div class="info-box">
+          <p><strong>Email:</strong> <span id="dash-email"></span></p>
+          <p><strong>Member since:</strong> <span id="dash-created"></span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
