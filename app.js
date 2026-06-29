@@ -1,4 +1,4 @@
-const API = 'http://localhost:8000';
+const API = 'https://ashikin-website.onrender.com';
 
 // ── Tab switching ──
 function showTab(tab) {
