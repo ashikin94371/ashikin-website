@@ -110,7 +110,7 @@ async function loadDashboard() {
     document.getElementById('auth-page').classList.add('hidden');
     document.getElementById('dashboard-page').classList.remove('hidden');
     document.getElementById('nav-email').textContent = user.email;
-    document.getElementById('welcome-msg').textContent = `Welcome back! 👋`;
+    document.getElementById('welcome-msg').textContent = `Welcome to you, Mou! 👋`;
     document.getElementById('dash-email').textContent = user.email;
     document.getElementById('dash-created').textContent = new Date(user.created_at).toLocaleDateString('en-CA', {
       year: 'numeric', month: 'long', day: 'numeric'
