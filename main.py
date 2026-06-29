@@ -4,6 +4,7 @@ from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from pydantic import BaseModel
 from datetime import datetime
 from pymongo.errors import DuplicateKeyError
+from bson import ObjectId
 
 from database import users_collection
 from auth import hash_password, verify_password, create_token, decode_token
@@ -30,7 +31,7 @@ def get_current_user(credentials: HTTPAuthorizationCredentials = Depends(bearer)
     user_id = decode_token(credentials.credentials)
     if user_id is None:
         raise HTTPException(status_code=401, detail="Invalid or expired token")
-    user = users_collection.find_one({"_id": user_id})
+    user = users_collection.find_one({"_id": ObjectId(user_id)})
     if user is None:
         raise HTTPException(status_code=401, detail="User not found")
     return {"id": str(user["_id"]), "email": user["email"], "created_at": user["created_at"]}
